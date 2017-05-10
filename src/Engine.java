@@ -27,7 +27,7 @@ public class Engine {
     public static HashMap<String, String> scoreMap = new HashMap<String, String>();//hashmap used to store the score and athlete data
 
 
-
+    private File storedData = new File("GameResults.txt"); // create a new file
    
     public void startGame() throws IOException {
        

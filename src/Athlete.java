@@ -1,47 +1,83 @@
+/*
+ * Athlete Class
+ *
+ * This class is Athlete has score and point parameter
+ *
+ * Author:
+ */
+
 import java.util.HashMap;
 
-public class Athlete {
+public class Athlete extends Participant{
 
-	  	private String score; // the score of every athlete
-	    private Integer point; //the point of every athlete
+    private String score; // the score of every athlete
+    private Integer point; //the point of every athlete
+    private static HashMap<String,Integer> AthletePointHashMap = new HashMap<>();
+
+    /**
+     * Constructor
+     *
+     * @param participantID
+     * @param participantName
+     * @param participantState
+     * @param participantAge
+     */
+    public Athlete(String participantID, String participantName, String participantState, int participantAge) {
+        super(participantID, participantName, participantState, participantAge);
+    }
+
+    /**
+     * Constructor
+     * @param participantID
+     * @param participantName
+     * @param participantState
+     * @param participantAge
+     * @param score
+     */
+    public Athlete(String participantID, String participantName, String participantState, int participantAge, String score) {
+        super(participantID, participantName, participantState, participantAge);
+        this.score = score;
+    }
+
+    /**
+     * Constructor
+     * @param participantID
+     * @param participantName
+     * @param participantState
+     * @param participantAge
+     * @param point
+     */
+    public Athlete(String participantID, String participantName, String participantState, int participantAge, Integer point) {
+        super(participantID, participantName, participantState, participantAge);
+        this.point = point;
+    }
 
 
-	    /**
-	     * Constructor
-	     *
-	     * @param AthleteID
-	     * @param AthleteName
-	     * @param AthleteState
-	     * @param AthleteAge
-	     */
-	    public Athlete(String AthleteID, String AthleteName, String AthleteState, int AthleteAge) {
-	        super(AthleteID, AthleteName, AthleteState, AthleteAge);
-	    }
+    /**
+     * getters and setters
+     * @return
+     */
+    public String getScore() {
+        return score;
+    }
 
-	    /**
-	     * Constructor
-	     * @param AthleteID
-	     * @param AthleteName
-	     * @param AthleteState
-	     * @param AthleteAge
-	     * @param score
-	     */
-	    public Athlete(String AthleteID, String AthleteName, String AthleteState, int AthleteAge, String score) {
-	        super(AthleteID, AthleteName, AthleteState, AthleteAge);
-	        this.score = score;
-	    }
+    public void setScore(String score) {
+        this.score = score;
+    }
 
-	    /**
-	     * Constructor
-	     * @param AthleteID
-	     * @param AthleteName
-	     * @param AthleteState
-	     * @param AthleteAge
-	     * @param point
-	     */
-	    public Athlete(String AthleteID, String AthleteName, String AthleteState, int AthleteAge, Integer point) {
-	        super(AthleteID, AthleteName, AthleteState, AthleteAge);
-	        this.point = point;
-	    }
+    public Integer getPoint() {
+        return point;
+    }
 
+    public void setPoint(Integer point) {
+        this.point = point;
+    }
+
+    public static HashMap<String, Integer> getAthletePointHashMap() {
+        return AthletePointHashMap;
+    }
+
+    public void setAthletePointHashMap(HashMap<String, Integer> athletePointHashMap) {
+        AthletePointHashMap = athletePointHashMap;
+    }
 }

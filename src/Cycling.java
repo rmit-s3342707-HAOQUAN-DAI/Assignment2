@@ -1,20 +1,24 @@
-
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-/*
- * Cycling Class
- *
- * This class is Cycling game activities
- *
- * Author:
- */
 
-public class Cycling extends Games{
+public class Cycling extends Games {
 
-
+    /**
+     * Override method to calculate Cycling score
+     *
+     * @return score
+     */
+    @Override
+    public String[] scores() {
+        String[] score = new String[Games.getAttendAthlete().size()];
+        for (int count = 0; count < Games.getAttendAthlete().size(); count++) {
+            Random random = new Random();
+            score[count] = String.format("%.1f", ((random.nextDouble() * 300.0d) + 500.0d));
+        }
+        return score;
+    }
 
     /**
      * read data from txt file and select 4-8 athletes to attend cycling
@@ -25,7 +29,9 @@ public class Cycling extends Games{
     public void readDataFromAthlete() throws IOException {
         ArrayList<String[]> attendCyclingAthlete = new ArrayList<>();
         attendCyclingAthlete.addAll(Cyclist.getCyclist());
-        super.selectRandomNumberAthlete(attendCyclingAthlete);
+        attendCyclingAthlete.addAll(superAthlete.getSuperathletes());
+        super.selectRandomAthlete(attendCyclingAthlete);
     }
+
 
 }

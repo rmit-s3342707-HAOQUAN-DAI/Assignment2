@@ -42,7 +42,7 @@ public class Swimming extends Games implements Sport {
         ArrayList<String[]> attendSwimmingAthlete = new ArrayList<>();
         attendSwimmingAthlete.addAll(Swimmer.getSwimmer());
         attendSwimmingAthlete.addAll(superAthlete.getSuperathletes());
-        super.selectRandomAthlete(attendSwimmingAthlete);
+        super.selectRandomNumberAthlete(attendSwimmingAthlete);
 
 
     }

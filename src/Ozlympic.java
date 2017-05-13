@@ -293,6 +293,7 @@ public class Ozlympic extends Application {
         gameEngine.loadAthleteInfo();
         gameEngine.startGame();
         gameEngine.saveResults();
+        
         this.storeDecreasedScoreList= gameEngine.getStoreDecreasedScoreList();
 
         // add the data to the table

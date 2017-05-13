@@ -39,7 +39,7 @@ public class Running extends Games implements Sport {
 
         ArrayList<String[]> attendRunningAthlete = new ArrayList<>();
         attendRunningAthlete.addAll(superAthlete.getSuperathletes());
-        super.selectRandomAthlete(attendRunningAthlete);
+        super.selectRandomNumberAthlete(attendRunningAthlete);
     }
 
 }

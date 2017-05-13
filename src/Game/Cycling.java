@@ -1,13 +1,22 @@
 package Game;
+
+import Participants.Cyclist;
+import Participants.Sprinter;
+import Participants.superAthlete;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import Participants.Cyclist;
-import Participants.superAthlete;
+/*
+ * Cycling Class
+ *
+ * This class is Cycling game activities
+ *
+ * Author:
+ */
 
-
-public class Cycling extends Games {
+public class Cycling extends Games implements Sport {
 
     /**
      * Override method to calculate Cycling score
@@ -33,9 +42,10 @@ public class Cycling extends Games {
     public void readDataFromAthlete() throws IOException {
         ArrayList<String[]> attendCyclingAthlete = new ArrayList<>();
         attendCyclingAthlete.addAll(Cyclist.getCyclist());
+        attendCyclingAthlete.addAll(Sprinter.getSprinter());
         attendCyclingAthlete.addAll(superAthlete.getSuperathletes());
-        super.selectRandomAthlete(attendCyclingAthlete);
+        super.selectRandomNumberAthlete(attendCyclingAthlete);
     }
 
-
 }
+

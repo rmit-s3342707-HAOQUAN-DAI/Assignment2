@@ -1,6 +1,9 @@
+package Participants;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static Participants.LoadData.COLUMN_NUM;
 
 /*
  * Official Class
@@ -9,10 +12,9 @@ import java.util.ArrayList;
  *
  * Author:
  */
-public class Official extends Athlete{
+public class Official extends Participant{
 
-    private static final int COLUMN_NUM = 5;
-	public static ArrayList<String[]> official = new ArrayList<String[]>();//official athlete
+    public static ArrayList<String[]> official = new ArrayList<String[]>();//official athlete
 
     /**
      * Constructor

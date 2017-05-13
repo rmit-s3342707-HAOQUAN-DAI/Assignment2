@@ -1,6 +1,9 @@
+package Participants;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static Participants.LoadData.COLUMN_NUM;
 
 /*
  * superAthlete Class
@@ -12,8 +15,7 @@ import java.util.ArrayList;
 
 public class superAthlete extends Athlete {
 
-    private static final int COLUMN_NUM = 5;
-	public static ArrayList<String[]> superathletes = new ArrayList<String[]>();// super athlete ArrayList
+    public static ArrayList<String[]> superathletes = new ArrayList<String[]>();// super athlete ArrayList
 
     /**
      * Constructor
@@ -87,3 +89,4 @@ public class superAthlete extends Athlete {
         superAthlete.superathletes = superathletes;
     }
 }
+

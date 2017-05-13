@@ -1,5 +1,9 @@
+package Participants;
+
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static Participants.LoadData.COLUMN_NUM;
 
 /*
  * Sprinter Class
@@ -11,8 +15,7 @@ import java.util.ArrayList;
 
 public class Sprinter extends Athlete{
 
-    private static final int COLUMN_NUM = 5;
-	public static ArrayList<String[]> sprinter = new ArrayList<String[]>(); //sprinter athlete
+    public static ArrayList<String[]> sprinter = new ArrayList<String[]>(); //sprinter athlete
 
     /**
      * Constructor

@@ -1,6 +1,10 @@
+package Participants;
+
+
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static Participants.LoadData.COLUMN_NUM;
 
 /*
  * Swimmer Class
@@ -12,8 +16,7 @@ import java.util.ArrayList;
 public class Swimmer extends Athlete{
 
 
-    private static final int COLUMN_NUM = 0;
-	public static ArrayList<String[]> swimmer = new ArrayList<String[]>();
+    public static ArrayList<String[]> swimmer = new ArrayList<String[]>();
 
     /**
      * Constructor
@@ -88,3 +91,4 @@ public class Swimmer extends Athlete{
         Swimmer.swimmer = swimmer;
     }
 }
+

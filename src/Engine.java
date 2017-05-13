@@ -6,6 +6,12 @@ import java.sql.Timestamp;
 import java.util.*;
 import java.util.Map.Entry;
 
+import Game.Cycling;
+import Game.Games;
+import Game.Running;
+import Game.Swimming;
+import Participants.Official;
+
 
 
 /*
@@ -30,7 +36,7 @@ public class Engine {
 
     public ArrayList<Entry<String, String>> storeDecreasedScoreList = new ArrayList<>(); // an ArrayList to store the top 3 athlete
 
-    private File storedData = new File("gameResults.txt"); // create a new file
+    private File storedData = new File("GameResults.txt"); // create a new file
     //the operator of the file
     private BufferedWriter out = new BufferedWriter(new FileWriter(storedData));
 

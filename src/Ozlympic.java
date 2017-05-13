@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,11 +16,22 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import Game.Games;
 
+/*
+ * Ozympic Class
+ *
+ * This class is the entrance of whole project
+ * HAOQUAN
+ */
 public class Ozlympic extends Application {
 
     private static final EventHandler<ActionEvent> ActionEvent = null;

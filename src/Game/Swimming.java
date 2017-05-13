@@ -1,6 +1,10 @@
+package Game;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+import Participants.Swimmer;
+import Participants.superAthlete;
 
 /*
  * Swimming Class

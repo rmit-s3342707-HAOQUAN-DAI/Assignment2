@@ -1,3 +1,6 @@
+package Participants;
+
+import static Participants.LoadData.COLUMN_NUM;
 /*
  * Athlete Class
  *

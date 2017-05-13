@@ -1,6 +1,9 @@
+package Game;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+
+import Participants.superAthlete;
 
 /*
  * Running Class

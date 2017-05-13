@@ -16,13 +16,17 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.hsqldb.Table;
 
 import Game.Games;
 
@@ -39,9 +43,10 @@ public class Ozlympic extends Application {
     private String predict_id = null; // the predition winner's id
     public static String Type = null; //record the type of game selected in toggle group
     private ArrayList<Map.Entry<String, String>> storeDecreasedScoreList = new ArrayList<>();// a Arraylist to store the ID and score
-
+   
     //private final TableView<GameRecord> scoreTable = new TableView<>();
     private final ObservableList<GameRecord> data = FXCollections.observableArrayList();
+    private final ObservableList<ShowResults> allResults = FXCollections.observableArrayList();
 
     private Button start = new Button("Start Game"); //create the start button
     private Button btnRestart =new Button("Restart"); //create the restart button
@@ -54,15 +59,15 @@ public class Ozlympic extends Application {
     }
 
     @Override // Override the start method in the Application class
-    public void start(Stage primaryStage) {
-        Scene scene = new Scene(getFirstPage(), 500, 300);
+    public void start(Stage primaryStage) throws IOException {
+        Scene scene = new Scene(getFirstPage(), 500, 350);
         primaryStage.setTitle("Ozlympic Game"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.setResizable(false);
         primaryStage.show(); // Display the stage
     }
 
-    protected VBox getFirstPage() {
+    protected VBox getFirstPage() throws IOException {
         // Hold two buttons in an HBox
         VBox titleInfo = new VBox();
         titleInfo.setSpacing(30);
@@ -75,9 +80,13 @@ public class Ozlympic extends Application {
 
         // create the text to welcome the player and ask the selection
         Text welcomeAndAsk = new Text(60, 60, "Please choose a game to play!");
+        
+        //Text author = new Text("s3342707");
+        
         titleInfo.getChildren().addAll(gameTitle, welcomeAndAsk);
-
-        ChoiceBox cb = new ChoiceBox((FXCollections.observableArrayList("Swimming", "Cycling", "Running")));
+        
+ 
+        ChoiceBox cb = new ChoiceBox((FXCollections.observableArrayList("Swimming", "Cycling", "Running"))); //choose game
         cb.setTooltip(new Tooltip("Select a Game"));
         cb.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> Type = ((String)newValue).toLowerCase());
 
@@ -117,34 +126,14 @@ public class Ozlympic extends Application {
             }
         });
         
-        /*showResult.setOnAction((ActionEvent e) -> {
-            if (cb.getValue() != null) {
-                try {
-                    getPredictStage();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            } else {
-                Stage s1 = new Stage();
-                Label warningMessage = new Label("Please select one game to start!");
-                warningMessage.setAlignment(Pos.CENTER);
-                Scene ss = new Scene(warningMessage, 250, 100);
-                s1.setTitle("WARNING");
-                s1.setScene(ss);
-                s1.setResizable(false);
-                s1.show();
-            }
+        
+        showResult.setOnAction((ActionEvent s) -> {
+            showAllResultTable();
         });
-        */
         
-        
+            
         exit.setOnAction(a-> System.exit(0)); //exit app
-        	
-        	
-        
-        
-        
-        
+       
         //BorderPane created,put the hBox into the boarderPane
         VBox vbox = new VBox();
         vbox.setSpacing(10);
@@ -154,28 +143,61 @@ public class Ozlympic extends Application {
     }
     
     
-    /*
+    
     public void showAllResultTable(){
+    	
     	Stage s3 = new Stage();
     	s3.setTitle("All Game Result");
     	s3.setResizable(false);
     	
     	//draw the table which is used to show results
-        VBox vBox = new VBox();
-        vBox.setAlignment(Pos.TOP_CENTER);
-        vBox.setSpacing(10);
-        vBox.setPadding(new Insets(10));
+        VBox vBox2 = new VBox();
+        vBox2.setAlignment(Pos.TOP_CENTER);
+        vBox2.setSpacing(10);
+        vBox2.setPadding(new Insets(10));
+        TableView allResultTable = new TableView();
+
+        allResultTable.setEditable(false);
+        allResultTable.setPadding(new Insets(5));
+        
+
+        
         
       //a label to show the results
         //create the title of the game
-        Text gameResult = new Text(20, 20, "All Game Results");
-        gameResult.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 25));
+        Text allGameResult = new Text(20, 20, "All Game Results");
+        allGameResult.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 25));
         
-       TableView<object> previousResult 
         
+        
+   
+        TableColumn athleteIDCol = new TableColumn("Athlete ID");
+        athleteIDCol.setCellValueFactory(
+                new PropertyValueFactory<>("athleteID"));
+        
+        TableColumn athleteSpeedCol = new TableColumn("Time");
+        athleteSpeedCol.setCellValueFactory(
+                new PropertyValueFactory<>("athleteTime"));
+        
+        TableColumn athletePointCol = new TableColumn("Points");
+        athletePointCol.setCellValueFactory(
+                new PropertyValueFactory<>("athletePio"));
+        
+
+        //bind all data
+        allResultTable.setEditable(false);
+        allResultTable.getColumns().addAll(athleteIDCol,athleteSpeedCol, athletePointCol);
+        allResultTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        allResultTable.setPadding(new Insets(5));
+        
+        vBox2.getChildren().addAll(allResultTable);
+        
+        Scene s2 = new Scene(vBox2, 600, 380);
+        s3.setScene(s2);
+        s3.show();
     	
     }
-    */
+    
     
 
     protected void getResultsTable() {
@@ -237,14 +259,14 @@ public class Ozlympic extends Application {
         btnRestart.setMinWidth(100);
 
         //add the detail of the game such as referee and play time
-        Text gameIdShowInfo =new Text();
-        Text refereeShowInfo =new Text();
-        Text timeStampShowInfo =new Text();
+       // Text gameIdShowInfo =new Text();
+        //Text refereeShowInfo =new Text();
+        //Text timeStampShowInfo =new Text();
         
 
-        gameIdShowInfo.setText(gameEngine.getGameID());
-        refereeShowInfo.setText(gameEngine.getReferee());
-        timeStampShowInfo.setText(gameEngine.getTimestamp().toString());
+        //gameIdShowInfo.setText(gameEngine.getGameID());
+        //refereeShowInfo.setText(gameEngine.getReferee());
+        //timeStampShowInfo.setText(gameEngine.getTimestamp().toString());
 
 
         Label isPredicted;

@@ -12,14 +12,12 @@ import Game.Running;
 import Game.Swimming;
 import Participants.Official;
 
-
-
 /*
  * Engine Class
  *
  * This class is the main class activities done
  *
- * Author:
+ * Author:HAOQUAN DAI
  */
 
 public class Engine {
@@ -38,7 +36,7 @@ public class Engine {
 
     private File storedData = new File("GameResults.txt"); // create a new file
     //the operator of the file
-    private BufferedWriter out = new BufferedWriter(new FileWriter(storedData));
+    private BufferedWriter out = new BufferedWriter(new FileWriter(storedData, true)); //true added 13/05
 
     public Engine() throws IOException {
         if (!storedData.exists()) {

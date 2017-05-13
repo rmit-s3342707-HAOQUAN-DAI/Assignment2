@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Participants.Sprinter;
+import Participants.Swimmer;
 import Participants.superAthlete;
 
 /*
@@ -38,6 +40,7 @@ public class Running extends Games implements Sport {
     public void readDataFromAthlete() throws IOException {
 
         ArrayList<String[]> attendRunningAthlete = new ArrayList<>();
+        attendRunningAthlete.addAll(Sprinter.getSprinter());
         attendRunningAthlete.addAll(superAthlete.getSuperathletes());
         super.selectRandomNumberAthlete(attendRunningAthlete);
     }

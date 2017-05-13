@@ -42,7 +42,6 @@ public class Cycling extends Games implements Sport {
     public void readDataFromAthlete() throws IOException {
         ArrayList<String[]> attendCyclingAthlete = new ArrayList<>();
         attendCyclingAthlete.addAll(Cyclist.getCyclist());
-        attendCyclingAthlete.addAll(Sprinter.getSprinter());
         attendCyclingAthlete.addAll(superAthlete.getSuperathletes());
         super.selectRandomNumberAthlete(attendCyclingAthlete);
     }

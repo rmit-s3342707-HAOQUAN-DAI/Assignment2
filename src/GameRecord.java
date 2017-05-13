@@ -9,13 +9,13 @@ public class GameRecord {
     private  SimpleStringProperty athleteID;
     private  SimpleStringProperty athleteScore;
     private  SimpleStringProperty points;
-   // private  SimpleStringProperty type;
-    //private  SimpleStringProperty Name;
-    //private  SimpleStringProperty state;
-    //private  SimpleStringProperty age;
+    private  SimpleStringProperty type;
+    private  SimpleStringProperty Name;
+    private  SimpleStringProperty state;
+    private  SimpleStringProperty age;
 	
-
-    /*
+    
+    
     public GameRecord(String aID, String aType, String aName, String atAge, String aState, String aScore, String poi) {
         this.athleteID = new SimpleStringProperty(aID);
         this.athleteScore = new SimpleStringProperty(aScore);
@@ -25,13 +25,14 @@ public class GameRecord {
         this.state = new SimpleStringProperty(aState);
         this.age = new SimpleStringProperty(atAge);
     }
-    */
-
+    
+    
     public GameRecord(String aID, String aScore, String poi) {
     	this.athleteID = new SimpleStringProperty(aID);
     	this.athleteScore = new SimpleStringProperty(aScore);
     	this.points = new SimpleStringProperty(poi);
 	}
+	
 	
 
 	public String getAthleteID() {
@@ -46,7 +47,7 @@ public class GameRecord {
         this.athleteID.set(athleteID);
     }
     
-    /*
+    
     public String getAthleteName() {
         return Name.get();
     }
@@ -94,12 +95,12 @@ public class GameRecord {
     public void setAthleteState(String athleteState) {
         this.state.set(athleteState);
     }
-    */
+    
     
     public String getAthleteScore() {
         return athleteScore.get();
     }
-
+    
     public SimpleStringProperty athleteScoreProperty() {
         return athleteScore;
     }

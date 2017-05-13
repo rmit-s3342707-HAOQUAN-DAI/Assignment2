@@ -24,9 +24,10 @@ public class Sprinter extends Athlete{
      * @param participantName
      * @param participantState
      * @param participantAge
+     * @param participantType
      */
-    public Sprinter(String participantID, String participantName, String participantState, int participantAge) {
-        super(participantID, participantName, participantState, participantAge);
+    public Sprinter(String participantID, String participantType, String participantName, String participantState, int participantAge) {
+        super(participantID, participantType, participantName, participantState, participantAge);
     }
 
     /**
@@ -38,8 +39,8 @@ public class Sprinter extends Athlete{
      * @param participantAge
      * @param score
      */
-    public Sprinter(String participantID, String participantName, String participantState, int participantAge, String score) {
-        super(participantID, participantName, participantState, participantAge, score);
+    public Sprinter(String participantID, String participantType, String participantName, String participantState, int participantAge, String score) {
+        super(participantID, participantType, participantName, participantState, participantAge, score);
     }
 
     /**
@@ -51,8 +52,8 @@ public class Sprinter extends Athlete{
      * @param participantAge
      * @param point
      */
-    public Sprinter(String participantID, String participantName, String participantState, int participantAge, Integer point) {
-        super(participantID, participantName, participantState, participantAge, point);
+    public Sprinter(String participantID, String participantType, String participantName, String participantState, int participantAge, Integer point) {
+        super(participantID, participantType, participantName, participantState, participantAge, point);
     }
 
     /**

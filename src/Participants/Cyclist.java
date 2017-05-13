@@ -24,8 +24,8 @@ public class Cyclist extends Athlete{
      * @param participantState
      * @param participantAge
      */
-    public Cyclist(String participantID, String participantName, String participantState, int participantAge) {
-        super(participantID, participantName, participantState, participantAge);
+    public Cyclist(String participantID, String participantType, String participantName, String participantState, int participantAge) {
+        super(participantID, participantType, participantName, participantState, participantAge);
     }
 
     /**
@@ -37,8 +37,8 @@ public class Cyclist extends Athlete{
      * @param participantAge
      * @param score
      */
-    public Cyclist(String participantID, String participantName, String participantState, int participantAge, String score) {
-        super(participantID, participantName, participantState, participantAge, score);
+    public Cyclist(String participantID, String participantType, String participantName, String participantState, int participantAge, String score) {
+        super(participantID, participantType, participantName, participantState, participantAge, score);
     }
 
     /**
@@ -50,8 +50,8 @@ public class Cyclist extends Athlete{
      * @param participantAge
      * @param point
      */
-    public Cyclist(String participantID, String participantName, String participantState, int participantAge, Integer point) {
-        super(participantID, participantName, participantState, participantAge, point);
+    public Cyclist(String participantID,String participantType, String participantName, String participantState, int participantAge, Integer point) {
+        super(participantID, participantType, participantName, participantState, participantAge, point);
     }
 
 
@@ -61,7 +61,7 @@ public class Cyclist extends Athlete{
      */
     public static void readCyclistData() throws IOException {
 
-        ArrayList<String[]> tempCy = LoadData.getLineList();
+        ArrayList<String[]> tempCy = LoadData.getLineList(); //read from loaded athlete
 
         for (int i = 0; i < tempCy.size(); i++) {
             if (tempCy.get(i)[1].equals("CYCLIST")) {

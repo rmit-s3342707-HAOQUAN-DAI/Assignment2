@@ -24,8 +24,8 @@ public class Official extends Participant{
      * @param participantState
      * @param participantAge
      */
-    public Official(String participantID, String participantName, String participantState, int participantAge) {
-        super(participantID, participantName, participantState, participantAge);
+    public Official(String participantID, String participantType, String participantName, String participantState, int participantAge) {
+        super(participantID, participantType, participantName, participantState, participantAge);
     }
 
     /**

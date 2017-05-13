@@ -26,8 +26,8 @@ public class Swimmer extends Athlete{
      * @param participantState
      * @param participantAge
      */
-    public Swimmer(String participantID, String participantName, String participantState, int participantAge) {
-        super(participantID, participantName, participantState, participantAge);
+    public Swimmer(String participantID, String participantType, String participantName, String participantState, int participantAge) {
+        super(participantID, participantType, participantName, participantState, participantAge);
     }
 
     /**
@@ -39,8 +39,8 @@ public class Swimmer extends Athlete{
      * @param participantAge
      * @param score
      */
-    public Swimmer(String participantID, String participantName, String participantState, int participantAge, String score) {
-        super(participantID, participantName, participantState, participantAge, score);
+    public Swimmer(String participantID, String participantType, String participantName, String participantState, int participantAge, String score) {
+        super(participantID, participantType, participantName, participantState, participantAge, score);
     }
 
     /**
@@ -52,8 +52,8 @@ public class Swimmer extends Athlete{
      * @param participantAge
      * @param point
      */
-    public Swimmer(String participantID, String participantName, String participantState, int participantAge, Integer point) {
-        super(participantID, participantName, participantState, participantAge, point);
+    public Swimmer(String participantID, String participantType, String participantName, String participantState, int participantAge, Integer point) {
+        super(participantID, participantType, participantName, participantState, participantAge, point);
     }
 
 

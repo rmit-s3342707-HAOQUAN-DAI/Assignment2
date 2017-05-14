@@ -30,6 +30,7 @@ import javafx.beans.property.SimpleStringProperty;
 	    }
 	    
 	    public static ArrayList<Entry<String, String>> getResultList() throws IOException {
+	    	resultList.clear();
 	    	getAllResults();
 			return resultList;	    	
 	    }

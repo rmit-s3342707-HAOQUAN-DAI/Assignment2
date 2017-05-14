@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -10,6 +12,7 @@ import Game.Cycling;
 import Game.Games;
 import Game.Running;
 import Game.Swimming;
+import Participants.LoadData;
 import Participants.Official;
 
 /*
@@ -22,7 +25,8 @@ import Participants.Official;
 
 public class Engine {
 
-    private String type = null; //the type of the game selected
+    private static final int COLUMN_NUM = 0;
+	private String type = null; //the type of the game selected
     private String referee = null; // the string stored the current referee
     private Timestamp timestamp;//timestamp to get the current system date
     private String[] s = new String[100];//a String store the game ID
@@ -33,7 +37,9 @@ public class Engine {
     public static HashMap<String, String> scoreMap = new HashMap<String, String>();//hashmap used to store the score and athlete data
 
     public ArrayList<Entry<String, String>> storeDecreasedScoreList = new ArrayList<>(); // an ArrayList to store the top 3 athlete
-
+    
+    public static ArrayList<String[]> allResultList = new ArrayList<>(); // store all game result
+    
     private File storedData = new File("GameResults.txt"); // create a new file
     //the operator of the file
     private BufferedWriter out = new BufferedWriter(new FileWriter(storedData, true)); //true added 13/05
@@ -150,7 +156,7 @@ public class Engine {
         //storeDecreasedScoreList.clear();
 
         // HashMap mapping athleteID,score and points of every athlete
-        LinkedHashMap<Entry<String, String>, Integer> orderedScoreMap = new LinkedHashMap<>();
+        LinkedHashMap<Entry<String, String>, Integer> orderedScoreMap = new LinkedHashMap<>(); 
         orderedScoreMap.clear();
 
         //input the AthleteID,AthleteScore and AthletePoints into a linked ID
@@ -197,6 +203,8 @@ public class Engine {
                 break;
         }
     }
+	
+ 
 
     /**
      * get a random official to each game

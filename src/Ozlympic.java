@@ -46,7 +46,7 @@ public class Ozlympic extends Application {
    
     //private final TableView<GameRecord> scoreTable = new TableView<>();
     private final ObservableList<GameRecord> data = FXCollections.observableArrayList();
-    private final ObservableList<ShowResults> allResults = FXCollections.observableArrayList();
+    private final ObservableList<GameRecord> allResults = FXCollections.observableArrayList();
 
     private Button start = new Button("Start Game"); //create the start button
     private Button btnRestart =new Button("Restart"); //create the restart button
@@ -126,11 +126,11 @@ public class Ozlympic extends Application {
             }
         });
         
-        
+        /*
         showResult.setOnAction((ActionEvent s) -> {
             showAllResultTable();
         });
-        
+        */
             
         exit.setOnAction(a-> System.exit(0)); //exit app
        
@@ -143,8 +143,9 @@ public class Ozlympic extends Application {
     }
     
     
-    
+    /*
     public void showAllResultTable(){
+    	this.allResults= ShowResults.getResultList();
     	
     	Stage s3 = new Stage();
     	s3.setTitle("All Game Result");
@@ -159,9 +160,7 @@ public class Ozlympic extends Application {
 
         allResultTable.setEditable(false);
         allResultTable.setPadding(new Insets(5));
-        
-
-        
+  
         
       //a label to show the results
         //create the title of the game
@@ -169,8 +168,7 @@ public class Ozlympic extends Application {
         allGameResult.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 25));
         
         
-        
-   
+
         TableColumn athleteIDCol = new TableColumn("Athlete ID");
         athleteIDCol.setCellValueFactory(
                 new PropertyValueFactory<>("athleteID"));
@@ -197,6 +195,7 @@ public class Ozlympic extends Application {
         s3.show();
     	
     }
+    */
     
     
 

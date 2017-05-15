@@ -23,7 +23,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.hsqldb.Table;
@@ -43,10 +46,12 @@ public class Ozlympic extends Application {
     private String predict_id = null; // the predition winner's id
     public static String Type = null; //record the type of game selected in toggle group
     private ArrayList<Map.Entry<String, String>> storeDecreasedScoreList = new ArrayList<>();// a Arraylist to store the ID and score
-   
+    //private ArrayList<String[]> storeAllResultList = new ArrayList<>();
+    //private ArrayList<String[]> storeAllResultList;   
+    
     //private final TableView<GameRecord> scoreTable = new TableView<>();
     private final ObservableList<GameRecord> data = FXCollections.observableArrayList();
-    private final ObservableList<GameRecord> allResults = FXCollections.observableArrayList();
+    private final ObservableList<ResultTable> allResults = FXCollections.observableArrayList();
 
     private Button start = new Button("Start Game"); //create the start button
     private Button btnRestart =new Button("Restart"); //create the restart button
@@ -126,11 +131,16 @@ public class Ozlympic extends Application {
             }
         });
         
-        /*
+        
         showResult.setOnAction((ActionEvent s) -> {
-            showAllResultTable();
+            try {
+				showAllResultTable();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
         });
-        */
+        
             
         exit.setOnAction(a-> System.exit(0)); //exit app
        
@@ -143,10 +153,9 @@ public class Ozlympic extends Application {
     }
     
     
-    /*
-    public void showAllResultTable(){
-    	this.allResults= ShowResults.getResultList();
-    	
+    
+    public void showAllResultTable() throws IOException{
+
     	Stage s3 = new Stage();
     	s3.setTitle("All Game Result");
     	s3.setResizable(false);
@@ -166,9 +175,25 @@ public class Ozlympic extends Application {
         //create the title of the game
         Text allGameResult = new Text(20, 20, "All Game Results");
         allGameResult.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 25));
-        
-        
+        TableView<ResultTable> AllResultTable = new TableView<>();
 
+		
+        for (int i = 0; i < ShowResults.resultList.size(); i++) {
+        	allResults.addAll((ResultTable) FXCollections.observableArrayList(
+        			ShowResults.resultList.get(i)[0] + " " + ShowResults.resultList.get(i)[1] + " "
+                      + ShowResults.resultList.get(i)[2]));
+        }
+		
+        
+        AllResultTable.setItems(allResults);
+//        allResults.add(new ResultTable("", "",""));
+//        int s = allResults.size() - 1;
+//        allResults.get(s).getAthleteID();
+     
+         
+
+        
+        
         TableColumn athleteIDCol = new TableColumn("Athlete ID");
         athleteIDCol.setCellValueFactory(
                 new PropertyValueFactory<>("athleteID"));
@@ -193,9 +218,10 @@ public class Ozlympic extends Application {
         Scene s2 = new Scene(vBox2, 600, 380);
         s3.setScene(s2);
         s3.show();
+        
     	
     }
-    */
+    
     
     
 
@@ -315,9 +341,9 @@ public class Ozlympic extends Application {
         gameEngine.startGame();
         gameEngine.saveResults();
         
-        this.storeDecreasedScoreList= gameEngine.getStoreDecreasedScoreList();
+       this.storeDecreasedScoreList= gameEngine.getStoreDecreasedScoreList();
 
-        // add the data to the table
+        // add score to each record
         data.add(new GameRecord(storeDecreasedScoreList.get(0).getKey(),
                 storeDecreasedScoreList.get(0).getValue(),"5"));
         data.add(new GameRecord(storeDecreasedScoreList.get(1).getKey(),
@@ -325,7 +351,7 @@ public class Ozlympic extends Application {
         data.add(new GameRecord(storeDecreasedScoreList.get(2).getKey(),
                 storeDecreasedScoreList.get(2).getValue(),"1"));
 
-        for (int i = 3; i <Games.attendAthlete.size() ; i++) {
+        for (int i = 3; i <Games.attendAthlete.size() ; i++) { //add 0 for the rest athletes
             data.add(new GameRecord(storeDecreasedScoreList.get(i).getKey(),
                     storeDecreasedScoreList.get(i).getValue(),"0"));
         }

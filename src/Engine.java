@@ -24,15 +24,18 @@ import Participants.Official;
  */
 
 public class Engine {
-
-    private static final int COLUMN_NUM = 0;
+ 
 	private String type = null; //the type of the game selected
     private String referee = null; // the string stored the current referee
+    private String aType = null;
+    private String aName = null;
+    private String aState = null;
+    private String aAge = null;
     private Timestamp timestamp;//timestamp to get the current system date
     private String[] s = new String[100];//a String store the game ID
     private int runTimes=0;// a integer to store the game run times
     private String GameID =null; // store the game id of game
-    private String athleteName; //store athlete names
+    //private String athleteName; //store athlete names
 
     public static HashMap<String, String> scoreMap = new HashMap<String, String>();//hashmap used to store the score and athlete data
 
@@ -42,7 +45,7 @@ public class Engine {
     
     private File storedData = new File("GameResults.txt"); // create a new file
     //the operator of the file
-    private BufferedWriter out = new BufferedWriter(new FileWriter(storedData, true)); //true added 13/05
+    private BufferedWriter out = new BufferedWriter(new FileWriter(storedData, true)); 
 
     public Engine() throws IOException {
         if (!storedData.exists()) {
@@ -224,14 +227,22 @@ public class Engine {
         this.type = type;
     }
 
-    public String getReferee() {
-        return referee;
+    public String getaName() {
+        return aName;
     }
 
-    public void setReferee(String referee) {
-        this.referee = referee;
+    public void setaName(String aName) {
+        this.aName = aName;
+    }
+    
+    public String getaType() {
+        return aType;
     }
 
+    public void setaType(String aType) {
+        this.aType = aType;
+    }
+    
     public Timestamp getTimestamp() {
         return timestamp;
     }

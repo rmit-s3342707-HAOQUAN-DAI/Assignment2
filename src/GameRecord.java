@@ -14,8 +14,7 @@ public class GameRecord {
     private  SimpleStringProperty state;
     private  SimpleStringProperty age;
 	
-    
-    
+    /*
     public GameRecord(String aID, String aType, String aName, String atAge, String aState, String aScore, String poi) {
         this.athleteID = new SimpleStringProperty(aID);
         this.athleteScore = new SimpleStringProperty(aScore);
@@ -25,7 +24,7 @@ public class GameRecord {
         this.state = new SimpleStringProperty(aState);
         this.age = new SimpleStringProperty(atAge);
     }
-    
+    */
     
     public GameRecord(String aID, String aScore, String poi) {
     	this.athleteID = new SimpleStringProperty(aID);

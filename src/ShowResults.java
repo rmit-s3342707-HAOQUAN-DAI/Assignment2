@@ -17,19 +17,19 @@ import javafx.beans.property.SimpleStringProperty;
 	         // Read a single line from the file until there are no more lines to read
 	         while ((result = br2.readLine()) != null) {
 	             StringTokenizer st2 = new StringTokenizer(result, ","); // using , to despite the content
-	             String[] resultCol = new String[COLUMN_NUM]; // Each currCol has 5 fields, so we need room for the 4 tokens.
+	             String[] resultCol = new String[COLUMN_NUM]; // Each currCol has 3 fields
 	             int i = 0;
 	             while (st2.hasMoreTokens()) {
 	             	resultCol[i++] = st2.nextToken();
 	             }
-	
+
 	             resultList.add(resultCol);
 	         }
 	         br2.close();
 	    	
 	    }
 	    
-	    public static ArrayList<Entry<String, String>> getResultList() throws IOException {
+	    public static ArrayList<String[]> getResultList() throws IOException {
 	    	resultList.clear();
 	    	getAllResults();
 			return resultList;	    	

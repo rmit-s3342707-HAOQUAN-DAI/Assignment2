@@ -21,7 +21,7 @@ public class LoadData {
     static ArrayList<String[]> lineList = new ArrayList<String[]>();// ArrayList used to store the row of csv file
     
 
-    //read the exact csv file data and return ArrayList
+    //read the exact txt file data and return ArrayList
     public static void getTXTData() throws IOException {
 
         BufferedReader br = new BufferedReader(new FileReader("participants.txt"));
@@ -29,7 +29,7 @@ public class LoadData {
         // Read a single line from the file until there are no more lines to read
         while ((line = br.readLine()) != null) {
             StringTokenizer st = new StringTokenizer(line, ","); // using , to despite the content
-            String[] currCol = new String[COLUMN_NUM]; // Each currCol has 5 fields, so we need room for the 4 tokens.
+            String[] currCol = new String[COLUMN_NUM]; // Each currCol has 5 fields
             int i = 0;
             while (st.hasMoreTokens()) {
             	currCol[i++] = st.nextToken();

@@ -19,7 +19,7 @@ public abstract class Games {
     public static ArrayList<String[]> attendAthlete = new ArrayList<String[]>(); //attend athlete in every game
     //stored current athlete attend games
 
-    public static final int COLUMN_NUM = 5; // column number if csv file
+    public static final int COLUMN_NUM = 5; // column number if txt file
 
 
     /**

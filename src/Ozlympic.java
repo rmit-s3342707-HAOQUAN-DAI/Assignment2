@@ -44,7 +44,7 @@ import Game.Games;
  */
 public class Ozlympic extends Application {
 
-    private static final EventHandler<ActionEvent> ActionEvent = null;
+    //private static final EventHandler<ActionEvent> ActionEvent = null;
 	Engine gameEngine = new Engine();
     private String predict_id = null; // the predition winner's id
     public static String Type = null; //record the type of game selected in toggle group
@@ -167,17 +167,6 @@ public class Ozlympic extends Application {
     
     public TextArea showAllResultTable() throws IOException{
 
-   
-
-
-        //t1.setEditable(false);
-        
-        //t1.appendText(ShowResults.getAllResults());
-        
-        
-       
-        
-        
        
 //        Text allGameResult = new Text(20, 20, "All Game Results");
 //        allGameResult.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 25));
@@ -220,7 +209,7 @@ public class Ozlympic extends Application {
 //        allResultTable.setPadding(new Insets(5));
         
         Stage s2 = new Stage();
-        s2.setTitle("Game Results");
+        s2.setTitle("All Game Results");
         s2.setResizable(false);
         
         Text Title = new Text(20, 20, " All Game Results");

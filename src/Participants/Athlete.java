@@ -80,7 +80,7 @@ public class Athlete extends Participant{
         return AthletePointHashMap;
     }
 
-    public void setAthletePointHashMap(HashMap<String, Integer> athletePointHashMap) {
-        AthletePointHashMap = athletePointHashMap;
-    }
+//    public void setAthletePointHashMap(HashMap<String, Integer> athletePointHashMap) {
+//        AthletePointHashMap = athletePointHashMap;
+//    }
 }

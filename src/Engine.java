@@ -27,10 +27,6 @@ public class Engine {
  
 	private String type = null; //the type of the game selected
     private String referee = null; // the string stored the current referee
-    private String aType = null;
-    private String aName = null;
-    private String aState = null;
-    private String aAge = null;
     private Timestamp timestamp;//timestamp to get the current system date
     private String[] s = new String[100];//a String store the game ID
     private int runTimes=0;// a integer to store the game run times
@@ -44,8 +40,11 @@ public class Engine {
     public static ArrayList<String[]> allResultList = new ArrayList<>(); // store all game result
     
     private File storedData = new File("GameResults.txt"); // create a new file
+    
+    private File storedScore = new File("Total Score.txt");
     //the operator of the file
-    private BufferedWriter out = new BufferedWriter(new FileWriter(storedData, true)); 
+    private BufferedWriter out = new BufferedWriter(new FileWriter(storedData, true));
+    private BufferedWriter out2 = new BufferedWriter(new FileWriter(storedData, true));
 
     public Engine() throws IOException {
         if (!storedData.exists()) {
@@ -183,6 +182,13 @@ public class Engine {
         out.write("\r\n");
         out.flush(); // put into the file
     }
+    
+//    public void savePoints() throws IOException{
+//    	generateGameID();
+//    	out2.write();
+//    	
+//    	
+//    }
 
     /**
      * Show the athlete attending each game
@@ -227,21 +233,6 @@ public class Engine {
         this.type = type;
     }
 
-    public String getaName() {
-        return aName;
-    }
-
-    public void setaName(String aName) {
-        this.aName = aName;
-    }
-    
-    public String getaType() {
-        return aType;
-    }
-
-    public void setaType(String aType) {
-        this.aType = aType;
-    }
     
     public Timestamp getTimestamp() {
         return timestamp;
@@ -263,8 +254,5 @@ public class Engine {
         return storeDecreasedScoreList;
     }
 
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

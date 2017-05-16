@@ -63,7 +63,7 @@ public class Swimmer extends Athlete{
      */
     public static void readSwimmerdata() throws IOException {
 
-        ArrayList<String[]> tempSw = LoadData.getLineList();
+        ArrayList<String[]> tempSw = LoadData.getLineList(); //read data from linelist
 
         for (int i = 0; i < tempSw.size(); i++) {
             if (tempSw.get(i)[1].equals("SWIMMER")) {
@@ -87,8 +87,8 @@ public class Swimmer extends Athlete{
         return swimmer;
     }
 
-    public static void setSwimmer(ArrayList<String[]> swimmer) {
-        Swimmer.swimmer = swimmer;
-    }
+//    public static void setSwimmer(ArrayList<String[]> swimmer) {
+//        Swimmer.swimmer = swimmer;
+//    }
 }
 

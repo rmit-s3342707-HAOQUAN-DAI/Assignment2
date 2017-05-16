@@ -86,7 +86,7 @@ public class Sprinter extends Athlete{
         return sprinter;
     }
 
-    public static void setSprinter(ArrayList<String[]> sprinter) {
-        Sprinter.sprinter = sprinter;
-    }
+//    public static void setSprinter(ArrayList<String[]> sprinter) {
+//        Sprinter.sprinter = sprinter;
+//    }
 }

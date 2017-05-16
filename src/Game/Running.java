@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import Participants.Sprinter;
-import Participants.Swimmer;
 import Participants.superAthlete;
 
 /*

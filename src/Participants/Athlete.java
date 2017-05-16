@@ -1,14 +1,5 @@
 package Participants;
 
-import static Participants.LoadData.COLUMN_NUM;
-/*
- * Athlete Class
- *
- * This class is Athlete has score and point parameter
- *
- * Author:
- */
-
 import java.util.HashMap;
 
 public class Athlete extends Participant{

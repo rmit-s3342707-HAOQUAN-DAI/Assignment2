@@ -1,11 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-import java.util.Map.Entry;
 
 
 	public class ShowResults {
@@ -24,12 +19,14 @@ import java.util.Map.Entry;
 				while(st != null){
 					resultList = resultList + st +"\n";
 					st = br.readLine();
+					//br.close();
 				}
 				
 			}catch(IOException e){
 				System.out.println("reading error!");
 				System.exit(0);
 			}
+			
 			System.out.println(resultList);
 			return resultList;
 			

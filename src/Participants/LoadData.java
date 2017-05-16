@@ -17,7 +17,7 @@ import java.util.StringTokenizer;
 
 public class LoadData {
 
-    public static final int COLUMN_NUM = 5;//the column of the csv file
+    public static final int COLUMN_NUM = 5;//the column of the txt file
     static ArrayList<String[]> lineList = new ArrayList<String[]>();// ArrayList used to store the row of csv file
     
 
@@ -41,6 +41,7 @@ public class LoadData {
 //                }
 //            }
             lineList.add(currCol);
+            System.out.println(lineList);
         }
         br.close();
     }
@@ -59,7 +60,7 @@ public class LoadData {
 //    public static void setLineList(ArrayList<String[]> lineList) {
 //        LoadData.lineList = lineList;
 //    }
-//    
+    
    
     
 

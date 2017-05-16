@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,6 +16,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -36,7 +38,8 @@ import Game.Games;
 /*
  * Ozympic Class
  *
- * This class is the entrance of whole project
+ * This class is the entrance of whole program
+ * 
  * HAOQUAN
  */
 public class Ozlympic extends Application {
@@ -139,12 +142,18 @@ public class Ozlympic extends Application {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-        });
+        }); 
         
+
+        showPoints.setOnAction((ActionEvent p) ->{
+        	showTotalPointtable();
+        });
+       
             
         exit.setOnAction(a-> System.exit(0)); //exit app
+        
+
        
-        //BorderPane created,put the hBox into the boarderPane
         VBox vbox = new VBox();
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.TOP_CENTER);
@@ -161,70 +170,117 @@ public class Ozlympic extends Application {
     	s3.setResizable(false);
     	
     	//draw the table which is used to show results
-        VBox vBox2 = new VBox();
-        vBox2.setAlignment(Pos.TOP_CENTER);
-        vBox2.setSpacing(10);
-        vBox2.setPadding(new Insets(10));
-        TableView allResultTable = new TableView();
+       
+        //TableView allResultTable = new TableView();
 
-        allResultTable.setEditable(false);
-        allResultTable.setPadding(new Insets(5));
-  
+//        allResultTable.setEditable(false);
+//        allResultTable.setPadding(new Insets(5));
+        TextArea t1 = new TextArea();
+       // t1.setFont(Font.font("Courier", 25));
+        t1.appendText(ShowResults.getAllResults());
+        t1.setPrefSize(300, 600);
+        t1.setEditable(false);
+        t1.setText(ShowResults.getAllResults());
         
-      //a label to show the results
-        //create the title of the game
-        Text allGameResult = new Text(20, 20, "All Game Results");
-        allGameResult.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 25));
-        TableView<ResultTable> AllResultTable = new TableView<>();
-
-		
-        for (int i = 0; i < ShowResults.resultList.size(); i++) {
-        	allResults.addAll((ResultTable) FXCollections.observableArrayList(
-        			ShowResults.resultList.get(i)[0] + " " + ShowResults.resultList.get(i)[1] + " "
-                      + ShowResults.resultList.get(i)[2]));
-        }
+        VBox root = new VBox(t1);
+        root.setAlignment(Pos.TOP_CENTER);
+        root.setSpacing(10);
+        root.setPadding(new Insets(10));
+        
+        root.getChildren().add(t1);
+        
+       
+//        Text allGameResult = new Text(20, 20, "All Game Results");
+//        allGameResult.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 25));
+//        TableView<ResultTable> AllResultTable = new TableView<>();
+        
+//        for (int i = 0; i < ShowResults.resultList.size(); i++) {
+//
+//        	allResults.add(new ResultTable("","",""));
+//        	allResults.get(i).setAthleteID(ShowResults.resultList.get(i)[0]);
+//        	allResults.get(i).setAthleteScore(ShowResults.resultList.get(i)[1]);
+//        	allResults.get(i).setPoints(ShowResults.resultList.get(i)[2]);
+//        	//System.out.println(ShowResults.resultList);
+//        }
 		
         
-        AllResultTable.setItems(allResults);
+       // AllResultTable.setItems(allResults);
 //        allResults.add(new ResultTable("", "",""));
 //        int s = allResults.size() - 1;
 //        allResults.get(s).getAthleteID();
      
-         
-
+                
         
+//        TableColumn athleteIDCol = new TableColumn("Athlete ID");
+//        athleteIDCol.setCellValueFactory(
+//                new PropertyValueFactory<>("athleteID"));
+//        
+//        TableColumn athleteSpeedCol = new TableColumn("Time");
+//        athleteSpeedCol.setCellValueFactory(
+//                new PropertyValueFactory<>("athleteTime"));
+//        
+//        TableColumn athletePointCol = new TableColumn("Points");
+//        athletePointCol.setCellValueFactory(
+//                new PropertyValueFactory<>("athletePio"));
+//        
+//
+//        //bind all data
+//        allResultTable.setEditable(false);
+//        allResultTable.getColumns().addAll(athleteIDCol,athleteSpeedCol, athletePointCol);
+//        allResultTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+//        allResultTable.setPadding(new Insets(5));
+       
         
-        TableColumn athleteIDCol = new TableColumn("Athlete ID");
-        athleteIDCol.setCellValueFactory(
-                new PropertyValueFactory<>("athleteID"));
-        
-        TableColumn athleteSpeedCol = new TableColumn("Time");
-        athleteSpeedCol.setCellValueFactory(
-                new PropertyValueFactory<>("athleteTime"));
-        
-        TableColumn athletePointCol = new TableColumn("Points");
-        athletePointCol.setCellValueFactory(
-                new PropertyValueFactory<>("athletePio"));
-        
-
-        //bind all data
-        allResultTable.setEditable(false);
-        allResultTable.getColumns().addAll(athleteIDCol,athleteSpeedCol, athletePointCol);
-        allResultTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        allResultTable.setPadding(new Insets(5));
-        
-        vBox2.getChildren().addAll(allResultTable);
-        
-        Scene s2 = new Scene(vBox2, 600, 380);
+        Scene s2 = new Scene(root, 600, 380);
         s3.setScene(s2);
         s3.show();
         
     	
     }
     
-    
-    
+    protected void showTotalPointtable(){
+    	Stage s4 = new Stage();
+    	s4.setTitle("Total Athlete Points");
+    	s4.setResizable(false);
+    	
+        VBox vBox2 = new VBox();
+        vBox2.setAlignment(Pos.TOP_CENTER);
+        vBox2.setSpacing(10);
+        vBox2.setPadding(new Insets(10));
+        TableView totalPointTable = new TableView();
 
+        totalPointTable.setEditable(false);
+        totalPointTable.setPadding(new Insets(5));
+  
+        
+        Text TotalPoints = new Text(20, 20, "Total Athlete Points");
+        TotalPoints.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 25));
+    	
+    	
+    	TableColumn athleteIDCol = new TableColumn("Athlete ID");
+        athleteIDCol.setCellValueFactory(
+                new PropertyValueFactory<>("athleteID"));
+        
+        TableColumn athletePointCol = new TableColumn("Total Points");
+        athletePointCol.setCellValueFactory(
+                new PropertyValueFactory<>("athletePio"));
+        
+
+        //bind all data
+        totalPointTable.setEditable(false);
+        totalPointTable.getColumns().addAll(athleteIDCol, athletePointCol);
+        totalPointTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        totalPointTable.setPadding(new Insets(5));
+        
+        vBox2.getChildren().addAll(totalPointTable);
+        
+        Scene s3 = new Scene(vBox2, 300, 380);
+        s4.setScene(s3);
+        s4.show();
+        
+    }
+    	
+    
     protected void getResultsTable() {
         Stage s2 = new Stage();
         s2.setTitle("Game Results");

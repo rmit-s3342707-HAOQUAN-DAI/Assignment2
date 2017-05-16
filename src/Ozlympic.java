@@ -376,8 +376,9 @@ public class Ozlympic extends Application {
         //create the title of the game
         Text predictTitle = new Text(20, 20, "Predict the winner.");
         predictTitle.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 15));
-        titleInfo.getChildren().addAll(predictTitle);
-
+        Text s = new Text(20, 20, "Please select from choice box");
+        titleInfo.getChildren().addAll(predictTitle,s);
+        
         //Hold three radiobutton in gameselect vBox
         VBox winnerSelect = new VBox();
         winnerSelect.setSpacing(15);

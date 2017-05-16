@@ -54,7 +54,7 @@ public class Ozlympic extends Application {
     
     //private final TableView<GameRecord> scoreTable = new TableView<>();
     private final ObservableList<GameRecord> data = FXCollections.observableArrayList();
-    private final ObservableList<ResultTable> allResults = FXCollections.observableArrayList();
+    //private final ObservableList<ResultTable> allResults = FXCollections.observableArrayList();
 
     private Button start = new Button("Start Game"); //create the start button
     private Button btnRestart =new Button("Restart"); //create the restart button
@@ -81,13 +81,16 @@ public class Ozlympic extends Application {
         titleInfo.setSpacing(30);
         titleInfo.setAlignment(Pos.TOP_CENTER);
         titleInfo.setPadding(new Insets(20));
-
+        
+        VBox intro = new VBox();
+        intro.setAlignment(Pos.CENTER_LEFT);
         //create the title of the game
         Text gameTitle = new Text(20, 20, "Welcome to the Ozlympic Game!");
         gameTitle.setFont(Font.font("Courier", FontWeight.BOLD, FontPosture.ITALIC, 25));
 
         // create the text to welcome the player and ask the selection
-        Text welcomeAndAsk = new Text(60, 60, "Please choose a game to play!");
+        Text welcomeAndAsk = new Text(60, 60, "Please choose from choice box to play!");
+      
         
         //Text author = new Text("s3342707");
         
@@ -153,41 +156,27 @@ public class Ozlympic extends Application {
         exit.setOnAction(a-> System.exit(0)); //exit app
         
 
-       
         VBox vbox = new VBox();
         vbox.setSpacing(10);
         vbox.setAlignment(Pos.TOP_CENTER);
-        vbox.getChildren().addAll(titleInfo, cb ,start, showResult , showPoints, exit);
+        vbox.getChildren().addAll(titleInfo, intro,cb ,start, showResult , showPoints, exit);
         return vbox;
     }
     
     
     
-    public void showAllResultTable() throws IOException{
+    public TextArea showAllResultTable() throws IOException{
 
-    	Stage s3 = new Stage();
-    	s3.setTitle("All Game Result");
-    	s3.setResizable(false);
-    	
-    	//draw the table which is used to show results
+   
+
+
+        //t1.setEditable(false);
+        
+        //t1.appendText(ShowResults.getAllResults());
+        
+        
        
-        //TableView allResultTable = new TableView();
-
-//        allResultTable.setEditable(false);
-//        allResultTable.setPadding(new Insets(5));
-        TextArea t1 = new TextArea();
-       // t1.setFont(Font.font("Courier", 25));
-        t1.appendText(ShowResults.getAllResults());
-        t1.setPrefSize(300, 600);
-        t1.setEditable(false);
-        t1.setText(ShowResults.getAllResults());
         
-        VBox root = new VBox(t1);
-        root.setAlignment(Pos.TOP_CENTER);
-        root.setSpacing(10);
-        root.setPadding(new Insets(10));
-        
-        root.getChildren().add(t1);
         
        
 //        Text allGameResult = new Text(20, 20, "All Game Results");
@@ -229,11 +218,27 @@ public class Ozlympic extends Application {
 //        allResultTable.getColumns().addAll(athleteIDCol,athleteSpeedCol, athletePointCol);
 //        allResultTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 //        allResultTable.setPadding(new Insets(5));
-       
         
-        Scene s2 = new Scene(root, 600, 380);
-        s3.setScene(s2);
-        s3.show();
+        Stage s2 = new Stage();
+        s2.setTitle("Game Results");
+        s2.setResizable(false);
+        
+        Text Title = new Text(20, 20, " All Game Results");
+
+        TextArea t1 = new TextArea();
+        t1.setEditable(false);
+        t1.setPrefSize(350, 600);
+        t1.setText(ShowResults.getAllResults());
+ 
+        
+        VBox v = new VBox();
+        v.getChildren().addAll(t1,Title);
+        Scene ss = new Scene(v, 350, 600);
+        	s2.setScene(ss);
+        	s2.show();
+
+	 
+        return t1;
         
     	
     }
@@ -305,22 +310,22 @@ public class Ozlympic extends Application {
         athleteIDCol.setCellValueFactory(
                 new PropertyValueFactory<>("athleteID"));
         
-        TableColumn athleteTypeCol = new TableColumn("Type");
-        athleteTypeCol.setCellValueFactory(
-                new PropertyValueFactory<>("athleteType"));
-        
-        TableColumn athleteAgeCol = new TableColumn("Age");
-        athleteAgeCol.setCellValueFactory(
-                new PropertyValueFactory<>("athleteAge"));
-        
-        TableColumn athleteStateCol = new TableColumn(" State");
-        athleteStateCol.setCellValueFactory(
-                new PropertyValueFactory<>("athleteState"));
-        
-        
-       TableColumn athleteNameCol = new TableColumn("Name");
-        athleteNameCol.setCellValueFactory(
-                new PropertyValueFactory<>("athleteName"));
+//        TableColumn athleteTypeCol = new TableColumn("Type");
+//        athleteTypeCol.setCellValueFactory(
+//                new PropertyValueFactory<>("athleteType"));
+//        
+//        TableColumn athleteAgeCol = new TableColumn("Age");
+//        athleteAgeCol.setCellValueFactory(
+//                new PropertyValueFactory<>("athleteAge"));
+//        
+//        TableColumn athleteStateCol = new TableColumn(" State");
+//        athleteStateCol.setCellValueFactory(
+//                new PropertyValueFactory<>("athleteState"));
+//        
+//        
+//       TableColumn athleteNameCol = new TableColumn("Name");
+//        athleteNameCol.setCellValueFactory(
+//                new PropertyValueFactory<>("athleteName"));
        
         
         TableColumn athleteScoreCol = new TableColumn("Score");
@@ -333,7 +338,7 @@ public class Ozlympic extends Application {
 
         //bind all data
         scoreTable.setEditable(false);
-        scoreTable.getColumns().addAll(athleteIDCol,athleteTypeCol, athleteNameCol, athleteAgeCol, athleteStateCol, athleteScoreCol,pointsCol);
+        scoreTable.getColumns().addAll(athleteIDCol, athleteScoreCol,pointsCol);
         scoreTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         scoreTable.setPadding(new Insets(5));
 

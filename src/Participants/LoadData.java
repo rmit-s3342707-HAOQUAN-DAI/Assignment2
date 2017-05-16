@@ -41,7 +41,7 @@ public class LoadData {
 //                }
 //            }
             lineList.add(currCol);
-            System.out.println(lineList);
+            //System.out.println(lineList);
         }
         br.close();
     }

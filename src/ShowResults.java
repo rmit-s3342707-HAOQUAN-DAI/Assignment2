@@ -12,25 +12,30 @@ import java.util.Map.Entry;
 //		private static final int COLUMN_NUM = 3;
 //		static ArrayList<String>  resultList = new ArrayList<String>(); //ArrayList used to store all results
 		
+		public static String resultList = "";
 		
-		public static String getAllResults() throws IOException {
-			BufferedReader input = new BufferedReader(new FileReader("gameResults.txt"));
-			String line = null;
-			try {
-				//BufferedReader input = new BufferedReader(new FileReader("output.txt"));
-				line = new String();
-				line = input.readLine();
-
-				while (line != null) {
-					
-					line = input.readLine();
+		public static String getAllResults(){
+			
+			try{
+				BufferedReader br = new BufferedReader(new FileReader("gameResults.txt"));
+				
+				String st = br.readLine();
+				
+				while(st != null){
+					resultList = resultList + st +"\n";
+					st = br.readLine();
 				}
-				input.close();
-
-			} catch (IOException e) {
-				System.err.println("File Reading Error!");
+				
+			}catch(IOException e){
+				System.out.println("reading error!");
 				System.exit(0);
 			}
+			System.out.println(resultList);
+			return resultList;
+			
+			
+		}
+		
 //			List<String> lines = new ArrayList<String>();
 //			String line;
 //			try{
@@ -46,7 +51,7 @@ import java.util.Map.Entry;
 //			return lines;
 //			
 //		}
-			return line;
+			
 
 			/*
 	        BufferedReader br = new BufferedReader(new FileReader("gameResults.txt"));
@@ -82,6 +87,6 @@ import java.util.Map.Entry;
 //	    	getAllResults();
 //			return resultList;	    	
 //	    }
-		}
-	  
 }
+	  
+
